@@ -5,7 +5,7 @@ import {
   Text,
   View,
   ScrollView,
-  ListView, 
+  ListView,
   StyleSheet,
   TouchableHighlight,
   AlertIOS,
@@ -13,27 +13,11 @@ import {
   AppRegistry
 } from 'react-native';
 
-import {firebaseApp} from './base';
-//import firebase from 'firebase';
-
-
+import {firebaseApp} from '../components/base';
+import ListItem from '../components/ListItem';
 
 var resortArray = [];
 var selectedResort = null;
-
-//const ListItem = require('ListItem');
-import ListItem from './ListItem';
-  // Initialize Firebase
-  // var config = {
-  //   apiKey: "AIzaSyBTKJZcHqJWllerYuEY_P0N4vPuwKzpHDI",
-  //   authDomain: "snowvt-29682.firebaseapp.com",
-  //   databaseURL: "https://snowvt-29682.firebaseio.com",
-  //   projectId: "snowvt-29682",
-  //   storageBucket: "snowvt-29682.appspot.com",
-  //   messagingSenderId: "57138291605"
-  // };
-
-// const firebaseApp = firebase.initializeApp(config);
 
 const styles = StyleSheet.create({
   container: {
@@ -41,8 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C2D3E',
   },
 });
-
-
 
 class WeatherScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -72,11 +54,11 @@ class WeatherScreen extends Component {
 		}
 
 		listenForResortItems(resortsRef) {
-		 
+
 		  this.resortsRef.on('value', (snap) => {
 
 		    resortsArray = [];
-		      
+
 		    // get children as an array
 		    var items = [];
 		    snap.forEach((child) => {
@@ -89,14 +71,11 @@ class WeatherScreen extends Component {
 		    });
 
 		  });  //end itemsRef.on
-
-		}
-
+	}
 
 getRef() {
     return firebaseApp.database().ref();
   }
-
 
   render() {
     return (
@@ -108,40 +87,21 @@ getRef() {
   }
 
     _renderItem(item) {
-    	
+
     	const onPress = () => {
     		//AlertIOS.alert(this.props.navigation);
     		selectedResort = item.friendlyname;
      		this.navigate('WeatherDetail');  //, { title: 'tommy', name: 'Detail' });
     };
 
-    	
+
     return (
      <ListItem item={item}  onPress={onPress} />
-     
+
     );
-    /*
-    const onPress = () => {
-      AlertIOS.alert(
-        'Complete',
-        null,
-        [
-          {text: 'Complete', onPress: (text) => this.itemsRef.child(item._key).remove()},
-          {text: 'Cancel', onPress: (text) => console.log('Cancelled')}
-        ]
-      );
-    };
-*/
-    
 }
 
 }
 
 
 export default WeatherScreen;
-
-
-
-
-
-

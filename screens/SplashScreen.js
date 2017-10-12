@@ -15,6 +15,19 @@ class SplashScreen extends Component {
     }
   };
 
+constructor(props){
+   super(props);
+
+   console.log("Gotcha");
+}
+
+componentDidMount() {
+   // setTimout(() => {
+   //    this.props.navigation.replace({title: "Login", passProps: this.props})
+   // }, 1000);
+}
+
+
   render() {
   	const { state, navigate } = this.props.navigation;
 
@@ -25,4 +38,3 @@ class SplashScreen extends Component {
 }
 
 export default SplashScreen;
-

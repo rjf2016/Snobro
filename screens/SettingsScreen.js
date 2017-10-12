@@ -38,5 +38,3 @@ render() {
 }
 
 export default SettingsScreen;
-
-
