@@ -4,19 +4,19 @@ import {
   Text,
   View,
   ScrollView,
-  ListView, 
+  ListView,
   StyleSheet,
   TouchableHighlight,
   Image,
   AppRegistry
 } from 'react-native';
 
-import {firebaseApp} from './base';
+import {firebaseApp} from '../components/base';
 
 
 var resortArray = [];
-	
-import ListItem from './ListItem';
+
+import ListItem from '../components/ListItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 class WeatherDetailScreen extends Component {
 
-  
+
   static navigationOptions = ({ navigation }) => {
   	const { state, setParams } = navigation;
   	const { params } = state;
@@ -53,11 +53,11 @@ class WeatherDetailScreen extends Component {
 		}
 
 		listenForResortItems(resortsRef) {
-		 
+
 		  this.resortsRef.on('value', (snap) => {
 
 		    resortsArray = [];
-		      
+
 		    // get children as an array
 		    var items = [];
 		    snap.forEach((child) => {
@@ -90,9 +90,3 @@ class WeatherDetailScreen extends Component {
 }
 
 export default WeatherDetailScreen;
-
-
-
-
-
-

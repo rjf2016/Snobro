@@ -1,22 +1,27 @@
+/* @flow */
 import React from 'react';
 import { Button, ScrollView, AppRegistry } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SampleText from './SampleText';
 
-import WeatherScreen from './components/WeatherScreen';
-import LoginScreen from './components/LoginScreen';
-import SplashScreen from './components/SplashScreen';
-import SettingsScreen from './components/SettingsScreen';
-import WeatherDetailScreen from './components/WeatherDetailScreen';
-  
+import AuthStore from './stores/AuthStore';
+import WeatherScreen from './screens/WeatherScreen';
+import LoginScreen from './screens/LoginScreen';
+import SplashScreen from './screens/SplashScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import WeatherDetailScreen from './screens/WeatherDetailScreen';
+
+const authstore = new AuthStore();
+
 const MyNavScreen = ({ navigation, banner }) => (
-  <ScrollView>   
+
+ <ScrollView>
    <Button
       onPress={() => navigation.navigate('Splash', { title: 'Splash', name: 'SnoBro' })}
       title="Go to the SnoBro Splash screen"
     />
     <Button
-      onPress={() => navigation.navigate('Login', { title: 'Login', name: 'Login' })}
+      onPress={() => navigation.navigate('Login', { title: 'Login', name: 'Login', auth: authstore } )}
       title="Go to the Login Screen"
     />
     <Button
@@ -29,23 +34,31 @@ const MyNavScreen = ({ navigation, banner }) => (
     />
 
     <Button onPress={() => navigation.goBack(null)} title="Go back" />
-  </ScrollView>
+</ScrollView>
+
+
+
 );
 
 const MyHomeScreen = ({ navigation }) => (
-  <MyNavScreen banner="Home Screen" navigation={navigation} />
+  <MyNavScreen banner="Home Screen" navigation={navigation} auth={AuthStore} />
 );
+
 MyHomeScreen.navigationOptions = {
   title: 'SnoBro',
 };
+MyHomeScreen.authFactor = {
+  auth: 'SnoBro',
+};
 
 
-const SimpleStack = StackNavigator({
+const SimpleStack = StackNavigator(
+   {
   Home: {
     screen: MyHomeScreen,
   },
   Settings: {
-    path: 'people/:name',
+    path: 'settings/:name',
     screen: SettingsScreen,
   },
   Splash: {
@@ -63,9 +76,8 @@ const SimpleStack = StackNavigator({
   WeatherDetail: {
     path: 'weatherdetail/:name',
     screen: WeatherDetailScreen,
-  },
+  }
 });
 
-//export default SimpleStack;
+
 AppRegistry.registerComponent('SnowBro', () => SimpleStack);
-//AppRegistry.registerComponent('SnowBro', () => SnowBro);
