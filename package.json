@@ -12,6 +12,11 @@
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.4",
     "react-native-accordion": "^1.0.1",
+    "react-native-elements": "^0.17.0",
+    "react-native-facebook-login": "^1.6.0",
+    "react-native-firebase-auth": "^1.0.1",
+    "react-native-google-sign-in": "^0.0.16",
+    "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.13"
   },
   "devDependencies": {
@@ -25,5 +30,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./fonts"
+    ]
   }
 }

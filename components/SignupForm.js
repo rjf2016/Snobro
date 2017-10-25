@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 const styles = require('../styles.js')
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native'
 
-class LoginForm extends Component {
+
+class SignupForm extends Component {
 
    constructor(props) {
      super(props);
@@ -12,32 +13,23 @@ class LoginForm extends Component {
         username: '',
         password: ''
      }
-     this.onLoginClick = this.onLoginClick.bind(this);
+     this.onSignUpClick = this.onSignUpClick.bind(this);
+
    }
 
 
-onLoginClick() {
-   this.props.callbackLogin(this.state.username, this.state.password);
-}
-
+   onSignUpClick() {
+      console.log("Well? username: " + this.state.username);
+      this.props.callbackSignUp(this.state.username, this.state.password);
+   }
    componentDidMount() {
       //this.state.auth.test("made it to the form!!!");
    }
-
-   // onForgotPasswordPress() {
-   //    alert("Send new password");
-   // }
-
-   onSignUpPress () {
-         //this.props.callbackSignUp();
-    }
-
   render() {
-
+    //console.log(this.state);
     return (
-
       <View style={style.container}>
-            <TextInput style = {style.input}
+         <TextInput style = {style.input}
                autoCapitalize="none"
                onSubmitEditing={() => this.passwordInput.focus()}
                autoCorrect={false}
@@ -57,14 +49,12 @@ onLoginClick() {
                secureTextEntry/>
 
          <TouchableOpacity style={style.buttonContainer}
-               onPress={this.onLoginClick}>
-            <Text style={style.buttonText}>Login</Text>
+               onPress={this.onSignUpClick}>
+            <Text  style={style.buttonText}>Sign-up</Text>
          </TouchableOpacity>
 
-         <View style={style.loginTextContainer}>
-               <Text style={style.forgotPassword} onPress={this.props.callbackForgot}>Forgot password?</Text>
-               <Text style={style.signUp} onPress={this.props.callbackSignUp}>Sign up</Text>
-         </View>
+
+
       </View>
       );
    }
@@ -119,11 +109,11 @@ const style = StyleSheet.create({
       flex: 1,
       alignSelf: 'flex-start',
       color: 'white',
-      fontSize: 14,
+      fontSize: 15,
       letterSpacing: -.5
    }
 
 })
 
 
-module.exports = LoginForm;
+module.exports = SignupForm;
