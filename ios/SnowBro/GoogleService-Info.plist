@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>57138291605-d9ubcp9d65ibshl33vqs9a68gncfmcdr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.57138291605-d9ubcp9d65ibshl33vqs9a68gncfmcdr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCeFVbTNT0EcQI-3ZS7A8ktCD6jE0uADl8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>57138291605</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.SnowBro</string>
+	<key>PROJECT_ID</key>
+	<string>snowvt-29682</string>
+	<key>STORAGE_BUCKET</key>
+	<string>snowvt-29682.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:57138291605:ios:4455c586ff77c43e</string>
+	<key>DATABASE_URL</key>
+	<string>https://snowvt-29682.firebaseio.com</string>
+</dict>
+</plist>

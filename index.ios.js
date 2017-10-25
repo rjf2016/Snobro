@@ -11,6 +11,13 @@ import SplashScreen from './screens/SplashScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import WeatherDetailScreen from './screens/WeatherDetailScreen';
 
+import SignupScreen from './screens/SignupScreen';
+import ForgotScreen from './screens/ForgotScreen';
+
+import HomeScreen from './screens/HomeScreen';
+import ResortDetailScreen from './screens/ResortDetailScreen';
+
+
 const authstore = new AuthStore();
 
 const MyNavScreen = ({ navigation, banner }) => (
@@ -29,9 +36,14 @@ const MyNavScreen = ({ navigation, banner }) => (
       title="Go to a Weather screen"
     />
     <Button
-      onPress={() => navigation.navigate('Settings', { title: 'Settings', name: 'Jane' })}
-      title="Go to the Settings screen"
+      onPress={() => navigation.navigate('Home', { title: 'SnoBro', name: 'Home screen' })}
+      title="Go to the new Home screen"
     />
+    <Button
+      onPress={() => navigation.navigate('Settings', { title: 'Settings', name: 'Jane' })}
+      title="Go to the settings screen"
+    />
+
 
     <Button onPress={() => navigation.goBack(null)} title="Go back" />
 </ScrollView>
@@ -54,7 +66,7 @@ MyHomeScreen.authFactor = {
 
 const SimpleStack = StackNavigator(
    {
-  Home: {
+  MyHome: {
     screen: MyHomeScreen,
   },
   Settings: {
@@ -68,15 +80,37 @@ const SimpleStack = StackNavigator(
   Weather: {
     path: 'weather/:name',
     screen: WeatherScreen,
+    navigationOptions: {
+      headerBackTitle: null,
+    }
   },
   Login: {
     path: 'login/:name',
     screen: LoginScreen,
   },
+  Home: {
+    path: 'homescreen/:name',
+    screen: HomeScreen,
+  },
+  ResortDetail: {
+    path: 'resortdetail/:name',
+    screen: ResortDetailScreen,
+  },
   WeatherDetail: {
     path: 'weatherdetail/:name',
     screen: WeatherDetailScreen,
-  }
+    navigationOptions: {
+      headerBackTitle: null,
+    }
+  },
+  SignUp: {
+    path: 'signup/:name',
+    screen: SignupScreen,
+   },
+  Forgot: {
+     path: 'forgot/:name',
+     screen: ForgotScreen,
+   }
 });
 
 

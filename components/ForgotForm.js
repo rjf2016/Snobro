@@ -2,42 +2,29 @@ import React, {Component} from 'react';
 const styles = require('../styles.js')
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native'
 
-class LoginForm extends Component {
+class ForgotForm extends Component {
 
    constructor(props) {
      super(props);
 
      this.state = {
         auth: this.props.parms.auth,
-        username: '',
-        password: ''
+        username: ''
      }
-     this.onLoginClick = this.onLoginClick.bind(this);
+     this.onForgotClick = this.onForgotClick.bind(this);
    }
 
-
-onLoginClick() {
-   this.props.callbackLogin(this.state.username, this.state.password);
-}
-
+   onForgotClick() {
+      this.props.callbackForgot(this.state.username);
+   }
    componentDidMount() {
       //this.state.auth.test("made it to the form!!!");
    }
-
-   // onForgotPasswordPress() {
-   //    alert("Send new password");
-   // }
-
-   onSignUpPress () {
-         //this.props.callbackSignUp();
-    }
-
   render() {
-
+    //console.log(this.state);
     return (
-
       <View style={style.container}>
-            <TextInput style = {style.input}
+         <TextInput style = {style.input}
                autoCapitalize="none"
                onSubmitEditing={() => this.passwordInput.focus()}
                autoCorrect={false}
@@ -48,23 +35,10 @@ onLoginClick() {
                onChangeText={(text) => this.setState({username: text})}
             />
 
-         <TextInput style = {style.input}
-               returnKeyType="go"
-               ref={(input)=> this.passwordInput = input}
-               placeholder='Password'
-               placeholderTextColor='gray'
-               onChangeText={(text) => this.setState({password: text})}
-               secureTextEntry/>
-
          <TouchableOpacity style={style.buttonContainer}
-               onPress={this.onLoginClick}>
-            <Text style={style.buttonText}>Login</Text>
+               onPress={this.onForgotClick}>
+            <Text  style={style.buttonText}>Send email reset</Text>
          </TouchableOpacity>
-
-         <View style={style.loginTextContainer}>
-               <Text style={style.forgotPassword} onPress={this.props.callbackForgot}>Forgot password?</Text>
-               <Text style={style.signUp} onPress={this.props.callbackSignUp}>Sign up</Text>
-         </View>
       </View>
       );
    }
@@ -119,11 +93,11 @@ const style = StyleSheet.create({
       flex: 1,
       alignSelf: 'flex-start',
       color: 'white',
-      fontSize: 14,
+      fontSize: 15,
       letterSpacing: -.5
    }
 
 })
 
 
-module.exports = LoginForm;
+module.exports = ForgotForm;

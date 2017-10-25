@@ -9,9 +9,6 @@ export default class AuthStore {
     })
   }
 
-  test(str){
-     console.log("you called auth.test with: " + str);
- }
   signIn(email, password) {
      if(this.authUser) {
       return Promise.resolve(this.authUser)
@@ -20,6 +17,9 @@ export default class AuthStore {
   }
 
   signUp(email, password) {
+     console.log("Inside");
+     console.log(email + " " + password);
+
     if(this.authUser) {
       let p = new Promise((resolve, reject) => {
         firebaseApp.auth().signOut().then(() => {

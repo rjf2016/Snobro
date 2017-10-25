@@ -31,6 +31,7 @@ class WeatherScreen extends Component {
     return {
       title: `${navigation.state.params.title}`,
     }
+
   };
 
 		navigate = (WeatherDetail) => {

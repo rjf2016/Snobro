@@ -8,10 +8,13 @@ import {
   StyleSheet,
   TouchableHighlight,
   Image,
-  AppRegistry
+  AppRegistry,
+  StatusBar,
+  Button
 } from 'react-native';
 
 import {firebaseApp} from '../components/base';
+import {Icon} from 'react-native-vector-icons/FontAwesome';
 
 
 var resortArray = [];
@@ -32,8 +35,18 @@ class WeatherDetailScreen extends Component {
   static navigationOptions = ({ navigation }) => {
   	const { state, setParams } = navigation;
   	const { params } = state;
+
     return {
-      title: `${params.title}`,
+      // title: `${params.title}`,
+      headerStyle: {backgroundColor: '#2C2D3E'},
+
+      // headerLeft:(
+      //    <Button
+      //     title={'<'} onPress={ () => { navigation.goBack() } }
+      //   ),
+
+
+
     }
   };
 
@@ -45,6 +58,8 @@ class WeatherDetailScreen extends Component {
 		    })
 		  };
 		  //this.resortsRef = this.getRef().child('Resorts');
+
+      console.log("HERRRREE");
 		}
 
 		componentDidMount() {
@@ -82,10 +97,16 @@ class WeatherDetailScreen extends Component {
   render() {
 
     return (
-     // <ListItem item={item} onPress={onPress} />
-     <Text>Made it to WeatherDetail</Text>
+      // <ListItem item={item} onPress={onPress} />
+      <View style={styles.container}>
+        <StatusBar
+          backgroundColor="#2C2D3E"
+          barStyle="light-content"
+        />
+
+      </View>
     );
-}
+  }
 
 }
 
