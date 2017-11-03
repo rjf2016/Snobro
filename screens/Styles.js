@@ -39,9 +39,34 @@ export const values = {
   "large_icon_size": 110,
 };
 
+export const dailyWeather = StyleSheet.create({
+  fullDaily: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  widget: {
+
+  borderWidth: 1,
+    borderColor: "blue"
+  },
+  temp: {
+    textAlign: 'center',
+  },
+  icon: {
+
+  },
+  phase: {
+    textAlign: "center",
+    fontWeight: "500",
+  },
+
+});
+
 export const addDegreesToEnd = (temp) => {
   return `${temp}${String.fromCharCode(176)}`
 };
+
 
 export const home_screen_list = StyleSheet.create(
   {
@@ -52,7 +77,11 @@ export const home_screen_list = StyleSheet.create(
     row: {
       elevation: 1,
       borderRadius: 2,
-      backgroundColor: colors.tertiary,
+      borderBottomWidth: 1,
+      borderRightWidth: 1,
+      // backgroundColor: colors.tertiary,
+      borderColor: 'lightgrey',
+      backgroundColor: 'gray',
       flex: 1,
       flexDirection: 'row',  // main axis
       justifyContent: 'flex-start', // main axis
@@ -67,6 +96,26 @@ export const home_screen_list = StyleSheet.create(
       marginBottom: 6,
       height: 80,
     },
+
+    rowSnow: {
+      backgroundColor: 'aliceblue',
+    },
+    rowSunny: {
+      backgroundColor: 'lightskyblue',
+    },
+    rowCloud: {
+      backgroundColor: 'grey',
+    },
+    rowRain: {
+      backgroundColor: 'lightsteelblue',
+    },
+    rowPartlySunny: {
+      backgroundColor: 'lightsteelblue',
+    },
+
+
+
+
     row_buttonContainer:{
        backgroundColor: 'red',
        paddingVertical: 15,
@@ -130,7 +179,7 @@ export const home_screen = StyleSheet.create(
       flexDirection: 'column', // main axis
       justifyContent: 'center', // main axis
       alignItems: 'center', // cross axis
-      backgroundColor: colors.background_dark,
+      backgroundColor: 'snow',
     },
   });
 
@@ -165,15 +214,40 @@ export const details_screen_2 = StyleSheet.create(
   }
 );
 
+
 export const details_screen_1 = StyleSheet.create(
   {
-    v_container: {
+    x_container: {
       flex: 1,
-      padding: 8,
+
+      paddingBottom: 0,
       flexDirection: 'column', // main axis
-      justifyContent: 'center', // main axis
+    //  justifyContent: 'center', // main axis
+      //alignItems: 'center', // cross axis
+      backgroundColor: colors.tertiary,
+
+    },
+    widget: {
+      width: 140,
+      height: 100,
+    },
+
+    fListContainer: {
+      flex: 1,
+      flexDirection: "row",
+      justifyContent: "space-around",
+      height: 100,
+    },
+    v_container: {
       alignItems: 'center', // cross axis
       backgroundColor: colors.tertiary,
+    },
+    h_container: {
+
+      flexDirection: 'row', // main axis
+      justifyContent: 'space-between', // main axis=
+      backgroundColor: colors.tertiary,
+      height: 80,
     },
     separator: {
       alignSelf: 'stretch',
@@ -184,9 +258,14 @@ export const details_screen_1 = StyleSheet.create(
       marginTop: 10,
       marginBottom: 10,
     },
+    row_weekly_timeplace: {
+      flex: 2,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    },
     place: {
-      paddingTop: 20,
-      paddingBottom: 20,
+      paddingTop: 0,
+      paddingBottom: 10,
       color: colors.weather_text_color,
       fontFamily: values.font_body,
       fontSize: 35,
@@ -199,11 +278,11 @@ export const details_screen_1 = StyleSheet.create(
     current_temp: {
       color: colors.weather_text_color,
       fontFamily: values.font_body,
-      fontSize: 45,
+      fontSize: 35,
     },
     list_container: {
-      marginTop: 14,
-      alignSelf: "stretch",
+      //marginTop: 14,
+      //alignSelf: "stretch",
     },
     list_row: {
       flexDirection: 'row',
@@ -213,68 +292,96 @@ export const details_screen_1 = StyleSheet.create(
     },
     list_row_time: {flex: 1},
     list_row_temp: {paddingLeft: 12},
-  }
-);
 
-export const settings_screen = StyleSheet.create(
-  {
-    v_container: {
-      flex: 1,
-      padding: 8,
-      flexDirection: 'column', // main axis
-      justifyContent: 'flex-start', // main axis
-      alignItems: 'center', // cross axis
-      backgroundColor: colors.tertiary,
+    summarySeparator: {
+      alignSelf: 'stretch',
+      backgroundColor: colors.separator_background,
+      height: 1,
+      marginRight: 40,
+      marginLeft: 40,
+      marginTop: 2,
+      marginBottom: 10,
     },
-    text: {
-      color: colors.weather_text_color,
+    summaryRow: {
+      marginTop: 20,
+      marginRight: 40,
+      marginLeft: 40,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    summaryRowHeaderText: {
+      textAlign: 'left',
+      fontSize: 16,
+    },
+    summaryRowText: {
+      textAlign: 'left',
       fontFamily: values.font_body,
-      fontSize: 20,
+      fontWeight: "500",
+      fontSize: 22,
     },
+
   }
 );
-
-// more info https://goo.gl/dqw4jF
-export const header = {
-  // background
-  headerStyle: {
-    backgroundColor: colors.secondary,
-  },
-  // arrows
-  headerTintColor: colors.text_light,
-  // my own styles for titleAndIcon
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingLeft: 8,
-  },
-  // my own styles for titleAndIcon
-  text: {
-    paddingLeft: 8,
-    color: colors.text_light,
-    fontFamily: values.font_body,
-    fontSize: values.font_title_size,
-  }
-
-};
-
-// more info https://goo.gl/eawcVg
-export const tabs = {
-  // text
-  labelStyle: {
-    fontFamily: values.font_body,
-    fontSize: values.font_body_size,
-  },
-  activeTintColor: colors.secondary, // text color active tab
-  inactiveTintColor: colors.text_medium, // text color inactive tab
-  indicatorStyle: {backgroundColor: colors.secondary}, // active tab highlight top
-  style: {
-    backgroundColor: colors.tertiary, // background color of tabs
-    borderTopColor: colors.tertiary // active tab highlight bottom
-  }
-};
+//
+// export const settings_screen = StyleSheet.create(
+//   {
+//     v_container: {
+//       flex: 1,
+//       padding: 8,
+//       flexDirection: 'column', // main axis
+//       justifyContent: 'flex-start', // main axis
+//       alignItems: 'center', // cross axis
+//       backgroundColor: colors.tertiary,
+//     },
+//     text: {
+//       color: colors.weather_text_color,
+//       fontFamily: values.font_body,
+//       fontSize: 20,
+//     },
+//   }
+// );
+//
+// // more info https://goo.gl/dqw4jF
+// export const header = {
+//   // background
+//   headerStyle: {
+//     backgroundColor: colors.secondary,
+//   },
+//   // arrows
+//   headerTintColor: colors.text_light,
+//   // my own styles for titleAndIcon
+//   container: {
+//     flex: 1,
+//     flexDirection: 'row',
+//     justifyContent: 'flex-start',
+//     alignItems: 'center',
+//     paddingLeft: 8,
+//   },
+//   // my own styles for titleAndIcon
+//   text: {
+//     paddingLeft: 8,
+//     color: colors.text_light,
+//     fontFamily: values.font_body,
+//     fontSize: values.font_title_size,
+//   }
+//
+// };
+//
+// // more info https://goo.gl/eawcVg
+// export const tabs = {
+//   // text
+//   labelStyle: {
+//     fontFamily: values.font_body,
+//     fontSize: values.font_body_size,
+//   },
+//   activeTintColor: colors.secondary, // text color active tab
+//   inactiveTintColor: colors.text_medium, // text color inactive tab
+//   indicatorStyle: {backgroundColor: colors.secondary}, // active tab highlight top
+//   style: {
+//     backgroundColor: colors.tertiary, // background color of tabs
+//     borderTopColor: colors.tertiary // active tab highlight bottom
+//   }
+// };
 
 // styling for for DrawerView.Items in contentOptions
 // more info - https://goo.gl/d74VUZ

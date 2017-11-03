@@ -76,7 +76,9 @@ class LoginScreen extends Component {
       }
 
   render() {
-
+    console.log("are we already signed in?");
+    console.log(this.state.auth);
+    
     return (
       <KeyboardAvoidingView behavior="padding" style={style.container}>
          <View style={style.loginContainer}>

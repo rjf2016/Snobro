@@ -16,6 +16,8 @@ import {Icon} from "react-native-elements";
 import * as css from "./Styles";
 import {listData} from "./Data";
 
+import Footer from '../components/Footer';
+
  class HomeScreen extends Component {
 
    // reference to navigator
@@ -28,18 +30,13 @@ static navigationOptions = props => {
      const { navigation } = props;
      const { state, setParams } = navigation;
      const { params } = state;
-
+const {weatherstore} = props.navigation.state.params.weatherstore;
     // const { editing } = state.params || false;
 
      return {
        title: `${navigation.state.params.title}`,
        headerRight: (
-        //  <Button
-        //    title={params.mode === 'edit' ? 'Done' : 'Edit'}
-        //    onPress={() =>
-        //      setParams( { mode: params.mode === 'edit' ? '' : 'edit' } )}
-        //  />
-        <Button
+          <Button
           title={params.editing === 'edit' ? 'Done' : 'Edit'}
           onPress={() => state.params.handleEdit() }
         />
@@ -81,7 +78,8 @@ static navigationOptions = props => {
      super(props);
 
      this.state = {
-       editing: ''
+       editing: '',
+       weatherlist: props.navigation.state.params.weatherstore.weatherList
       }
       this.renderRow = this.renderRow.bind(this);
 
@@ -96,8 +94,6 @@ static navigationOptions = props => {
         });
 
     }
-
-
 
   // only renders each list item
   renderRow({item}) {
@@ -143,7 +139,7 @@ static navigationOptions = props => {
           () => {
             //this._navigation.navigate("DetailsRoute", {...item});
             console.log(this.props);
-            this.props.navigation.navigate('ResortDetail', {...item});
+            this.props.navigation.navigate('ResortDetail', {item});
           }
         }
       >
@@ -164,8 +160,6 @@ static navigationOptions = props => {
     _navigation = this.props.navigation;
 
 
-console.log(this.state);
-
     return (
       <View style={css.home_screen.v_container}>
         {/* <StatusBar
@@ -178,14 +172,20 @@ console.log(this.state);
 
         <FlatList
           style={css.home_screen_list.container}
-          data={listData}
+          //data={listData}
           renderItem={this.renderRow}
+          data={this.props.navigation.state.params.weatherstore.state.weatherList}
           key={this.state.editing}
         />
 
+        <Footer
+         //current={this.state.current}
+         //count=1
+         navigator={_navigation.navigator} />
+
       </View>
 
-      
+
     );
 
   }// end render()

@@ -1,0 +1,178 @@
+{
+  "Notifications" : {
+    "boltonvalley" : {
+      "liftscount" : "''",
+      "snow" : "''",
+      "trailcount" : "''"
+    }
+  },
+  "Resorts" : {
+    "boltonvalley" : {
+      "PrecipToday" : 0.0,
+      "friendlyname" : "Bolton Valley",
+      "lastupdated" : 0,
+      "r_base" : "22\"",
+      "r_lastupd" : "4/10/2017",
+      "r_liftsopen" : "7",
+      "r_snow24hr" : "10\"",
+      "r_surface" : "N/A",
+      "r_temp" : "35",
+      "r_trailsopen" : "70",
+      "r_weather" : "Snow",
+      "r_weatherdate" : "April 20th",
+      "r_weatherdatetime" : "3:56PM",
+      "r_weathertime" : "8:30am",
+      "resort" : "boltonvalley"
+    },
+    "jaypeak" : {
+      "friendlyname" : "Jay Peak",
+      "lastupdated" : 0,
+      "precip" : 0.0,
+      "r_base" : "1-12 in",
+      "r_lastupd" : "3/15/2017",
+      "r_liftsopen" : "0 of 9",
+      "r_snow24hr" : "0-0 in",
+      "r_surface" : "Spring Conditions // Machine Groomed",
+      "r_temp" : "47",
+      "r_trailsopen" : "78",
+      "r_weather" : "Light rain",
+      "r_weatherdate" : "3/20/2017",
+      "r_weatherdatetime" : "5:50AM",
+      "r_weathertime" : "9:30am",
+      "resort" : "jaypeak"
+    },
+    "madriverglen" : {
+      "PrecipToday" : 0.0,
+      "friendlyname" : "Mad River Glen",
+      "lastupdated" : 0,
+      "r_base" : "30-40",
+      "r_lastupd" : "3/15/2017",
+      "r_liftsopen" : 6,
+      "r_snow24hr" : " 0\" - 0\"",
+      "r_surface" : "Primary: Moss & Rocks",
+      "r_temp" : "63",
+      "r_trailsopen" : 48,
+      "r_weather" : " ",
+      "r_weatherdate" : "April 14, 2017",
+      "r_weatherdatetime" : "9:49am",
+      "r_weathertime" : "9:30am",
+      "relhumidity" : 0,
+      "resort" : "madriverglen"
+    },
+    "sugarbush" : {
+      "PrecipToday" : 0.0,
+      "friendlyname" : "Sugarbush",
+      "lastupdated" : 0,
+      "r_base" : "4 - 43\"",
+      "r_lastupd" : "4/10/2017",
+      "r_liftsopen" : "1",
+      "r_snow24hr" : "0\"",
+      "r_surface" : "N/A",
+      "r_temp" : "33",
+      "r_trailsopen" : "60",
+      "r_weather" : "Chance Showers",
+      "r_weatherdate" : "2/20/2017",
+      "r_weatherdatetime" : "9:31am",
+      "r_weathertime" : "9:30am",
+      "relhumidity" : 0,
+      "resort" : "sugarbush"
+    }
+  },
+  "State" : {
+    "VT" : {
+      "boltonvalley" : "Bolton Valley",
+      "jaypeak" : "Jay Peak",
+      "madriverglen" : "Mad River Glen",
+      "sugarbush" : "Sugarbush"
+    }
+  },
+  "UserData" : {
+    "GNOzOY6bmCPP8r3IJQE3AOUceBC3" : {
+      "jaypeak" : "jaypeak",
+      "killington" : "killington",
+      "sugarbush" : "sugarbush"
+    }
+  },
+  "Users" : {
+    "GNOzOY6bmCPP8r3IJQE3AOUceBC3" : {
+      "displayName" : "Tom Fahey",
+      "email" : "tjf081@gmail.com",
+      "emailVerified" : true,
+      "photoUrl" : "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+    }
+  },
+  "Weather" : {
+    "boltonvalley" : {
+      "chance_rain" : 10,
+      "chance_snow" : 30,
+      "day1_temp" : 25,
+      "day1_weather" : "Flurries possible",
+      "day2_temp" : 23,
+      "day2_weather" : "Snow",
+      "day3_temp" : 18,
+      "day3_weather" : "Sleet",
+      "description" : "Snow",
+      "resort" : "boltonvalley",
+      "temp" : 22,
+      "temp_hi" : 34,
+      "temp_lo" : 18,
+      "weather_date" : "3/15/2017",
+      "weather_time" : "2:32PM",
+      "wind" : "NE 10mph"
+    },
+    "jaypeak" : {
+      "chance_rain" : 15,
+      "chance_snow" : 20,
+      "day1_temp" : 25,
+      "day1_weather" : "Flurries",
+      "day2_temp" : 28,
+      "day2_weather" : "Heavy Snow",
+      "day3_temp" : 28,
+      "day3_weather" : "Sleet",
+      "description" : "Snow",
+      "resort" : "jaypeak",
+      "temp" : 22,
+      "temp_hi" : 31,
+      "temp_lo" : 15,
+      "weather_date" : "3/15/2017",
+      "weather_time" : "1:15PM",
+      "wind" : "NE 20mph"
+    },
+    "madriverglen" : {
+      "chance_rain" : 5,
+      "chance_snow" : 80,
+      "day1_temp" : 11,
+      "day1_weather" : "Snow",
+      "day2_temp" : 28,
+      "day2_weather" : "Snow",
+      "day3_temp" : 28,
+      "day3_weather" : "Snow",
+      "description" : "Snow",
+      "resort" : "madriverglen",
+      "temp" : 21,
+      "temp_hi" : 21,
+      "temp_lo" : 5,
+      "weather_date" : "3/15/2017",
+      "weather_time" : "12:15PM",
+      "wind" : "E 30mph"
+    },
+    "sugarbush" : {
+      "chance_rain" : 5,
+      "chance_snow" : 80,
+      "day1_temp" : 11,
+      "day1_weather" : "Snow",
+      "day2_temp" : 28,
+      "day2_weather" : "Snow",
+      "day3_temp" : 28,
+      "day3_weather" : "Snow",
+      "description" : "Snow",
+      "resort" : "sugarbush",
+      "temp" : 21,
+      "temp_hi" : 21,
+      "temp_lo" : 5,
+      "weather_date" : "3/15/2017",
+      "weather_time" : "12:15PM",
+      "wind" : "E 30mph"
+    }
+  }
+}
