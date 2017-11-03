@@ -5,6 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import SampleText from './SampleText';
 
 import AuthStore from './stores/AuthStore';
+import WeatherStore from './stores/WeatherStore';
+
 import WeatherScreen from './screens/WeatherScreen';
 import LoginScreen from './screens/LoginScreen';
 import SplashScreen from './screens/SplashScreen';
@@ -19,6 +21,8 @@ import ResortDetailScreen from './screens/ResortDetailScreen';
 
 
 const authstore = new AuthStore();
+const weatherstore = new WeatherStore();
+
 
 const MyNavScreen = ({ navigation, banner }) => (
 
@@ -28,16 +32,16 @@ const MyNavScreen = ({ navigation, banner }) => (
       title="Go to the SnoBro Splash screen"
     />
     <Button
-      onPress={() => navigation.navigate('Login', { title: 'Login', name: 'Login', auth: authstore } )}
+      onPress={() => navigation.navigate('Login', { title: 'Login', name: 'Login', auth: authstore, weatherstore: weatherstore } )}
       title="Go to the Login Screen"
     />
-    <Button
-      onPress={() => navigation.navigate('Weather', { title: 'Weather', name: 'Jay Peak' })}
+    {<Button
+      onPress={() => navigation.navigate('Weather', { title: 'Weather', name: 'Jay Peak', auth: authstore, weatherstore: weatherstore })}
       title="Go to a Weather screen"
-    />
+    />}
     <Button
-      onPress={() => navigation.navigate('Home', { title: 'SnoBro', name: 'Home screen' })}
-      title="Go to the new Home screen"
+      onPress={() => navigation.navigate('Home', { title: 'SnoBro', name: 'Home screen', auth: authstore, weatherstore: weatherstore })}
+      title="Go to the new Weather home screen"
     />
     <Button
       onPress={() => navigation.navigate('Settings', { title: 'Settings', name: 'Jane' })}
