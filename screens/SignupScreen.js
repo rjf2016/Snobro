@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 
-import {firebaseApp} from '../components/base';
+//import {firebaseApp} from '../components/base';
 import SignupForm from '../components/SignupForm';
 
 class SignupScreen extends Component {
@@ -44,8 +44,8 @@ class SignupScreen extends Component {
 
          this.state.auth.signUp(username, password).then((userData) =>
            {
-            console.log("Success");
             const { navigation } = this.props;
+            this.state.auth.seedResorts();
             navigation.goBack();  //goback to the LoginScreen to type in the new email and pwd
            }
          ).catch((error) =>

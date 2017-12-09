@@ -12,10 +12,11 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 
-import {firebaseApp} from '../components/base';
+//import {firebaseApp} from '../components/base';
 import LoginForm from '../components/LoginForm';
+import { observer } from 'mobx-react/native'
 
-
+@observer
 class LoginScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -25,40 +26,44 @@ class LoginScreen extends Component {
 
           navigateSignUp = (SignUp) => {
              const {navigate} = this.props.navigation;
-             const {auth} = this.props.navigation.state.params.auth;
+             const {auth} = this.props.screenProps.store;
              navigate('SignUp', { title: "Sign up", auth: this.state.auth });
            }
            navigateForgot = (Forgot) => {
               const {navigate} = this.props.navigation;
-              const {auth} = this.props.navigation.state.params.auth;
+              const {auth} = this.props.screenProps.store;
               navigate('Forgot', { title: "Forgot Password", auth: this.state.auth });
             }
+          navigateWeather = (WeatherScreen) => {
+             const {navigate} = this.props.navigation;
+             navigate('Weather', { title: "", passProps: this.props });
+           }
 
 
 	  constructor(props) {
 		  super(props);
-
+       
         this.state = {
-          auth: props.navigation.state.params.auth,
+          auth: props.screenProps.store.auth,
           username: '',
           pwd: ''
          }
 
         this.onSignUpNavigate = this.onSignUpNavigate.bind(this);
-        this.onLoginClick = this.onLoginClick.bind(this);
         this.onForgotNavigate = this.onForgotNavigate.bind(this);
+
+        this.onLoginClick = this.onLoginClick.bind(this);
+        //this.onSignUpClick = this.onSignUpClick.bind(this);
     	}
 
+
+
    onLoginClick(username, password) {
-
-    console.log("credentials: " + username + " " + password);
-
 
     this.state.auth.signIn(username, password
     ).then((userData) =>
       {
-       console.log("Success");
-       console.log(this.state.auth);
+          this.navigateWeather('WeatherScreen');
       }
     ).catch((error) =>
         {
@@ -68,6 +73,9 @@ class LoginScreen extends Component {
          }
       );
    }
+
+
+
    onSignUpNavigate() {
          this.navigateSignUp('SignUp');
       }
@@ -76,9 +84,7 @@ class LoginScreen extends Component {
       }
 
   render() {
-    console.log("are we already signed in?");
-    console.log(this.state.auth);
-    
+  
     return (
       <KeyboardAvoidingView behavior="padding" style={style.container}>
          <View style={style.loginContainer}>

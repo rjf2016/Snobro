@@ -1,13 +1,13 @@
 import MobxFirebaseStore, {primitiveKey} from 'mobx-firebase-store';
 import { ObservableMap, observable, action, computed, autorun } from 'mobx';
-
+//import {observer} from 'mobx-react/native';
 
 import Firebase from 'firebase';
 
-const base = 'Weather'; 
+const base = 'Resorts';
 
- export default class WeatherStore extends MobxFirebaseStore {
-   @observable weatherData = "";
+ export default class ResortStore extends MobxFirebaseStore {
+   @observable resortData = "";
 
    constructor()
       {
@@ -18,46 +18,36 @@ const base = 'Weather';
          })
 
       }
-     @action setItem(data) {
-          this.weatherData = data;
+
+      @action setItem(data) {
+          this.resortData = data;
         }
 
   // Accessors
     getAll(){
-     return this.getData(base);
+       return this.getData(base);
      }
 
     subs()  {
-
       return [{
-        subKey: 'Weather',
+        subKey: 'Resorts',
         asList: true,
         forEachChild: {
           childSubs: (childKey, childVal) => {
             return [{
               subKey: 'userdata_'+childKey,
               asValue: true,
-              path: 'Weather/'+childKey,
-              onData: (type, snapshot) => {
-                       this.setItem(snapshot.val().resort );
-                    },
-            },
-            {
-              subKey: 'resortdata_'+childKey,
-              asValue: true,
               path: 'Resorts/'+childKey,
-
+            //  onData: (type, snapshot) => console.log('Data Changed!', type, 'UserData', snapshot.val() ),  //debugging line
               onData: (type, snapshot) => {
-                      this.setItem(snapshot.val().resort );
+                      this.setItem(snapshot.val().friendlyname );
+                      // console.log(this.weatherData + " is the new value")
                     },
-            }
 
-            ]
+            }]
           }
         },
-        //path: 'UserData/GNOzOY6bmCPP8r3IJQE3AOUceBC3'
-        path: 'UserData/' + Firebase.auth().currentUser.uid
+        path: 'UserData/GNOzOY6bmCPP8r3IJQE3AOUceBC3'
       }];
      }
-
  }

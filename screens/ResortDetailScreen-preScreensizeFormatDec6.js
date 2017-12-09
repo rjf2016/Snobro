@@ -1,7 +1,7 @@
 // @flow
 
 import React, {Component} from "react";
-import {FlatList, Text, View, Image, StyleSheet} from "react-native";
+import {FlatList, Text, View, Image} from "react-native";
 
 import { PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator } from 'rn-viewpager';
 import {Icon} from "react-native-elements";
@@ -22,17 +22,22 @@ export default class ResortDetailScreen extends Component {
         headerBackTitleStyle:{color: 'white', zIndex: 100},
         
     }
+
+    // title: `Resort Detail`,
   };
 
 
 
   constructor (props) {
      super(props);
+
+     console.log(this.navigationOptions);
+
    }
 
 
   renderDotIndicator() {
-        return <PagerDotIndicator style={{marginBottom: 3}} pageCount={3} selectedDotStyle={{backgroundColor: 'skyblue'}} />;
+        return <PagerDotIndicator style={{marginBottom: 30}} pageCount={3} selectedDotStyle={{backgroundColor: 'skyblue'}} />;
     }
 
   render() {
@@ -55,43 +60,16 @@ export default class ResortDetailScreen extends Component {
       let place = postObj.get('resort');
       let tempr = postObj.get('temp');
 
-      let {iconName, iconFont, iconColor} = css.getWeatherIcons(postObj.get('day1_weather'))
+    let {iconName, iconFont, iconColor} = css.getWeatherIcons(postObj.get('day1_weather'))
 
-
-      let weatherStr = postObj.get('day1_weather');
-      let backsrc = css.getBackgroundImage(weatherStr)
-      let snowsrc = css.getFallingSnowImage();
+      
 
       const temp = tempr; //css.addDegreesToEnd(tempr);
 
-//<View style={css.details_screen_1.x_container}>
-//  <Image style={{flex:1, top: 0, left: 0, position: 'absolute', width:'100%', height:'100%', resizeMode: 'stretch'}} source={backsrc} />
-      
-//       <View style={styles.backgroundContainer}><Image source={backsrc} resizeMode='stretch' style={styles.backdrop} /></View>
-//        <View style={styles.overlay}><Image style={styles.logo} source={snowsrc} /></View> 
-
-     var weatherDisplay = null;
-     var snowDisplay = null;
-
-     if (weatherStr.indexOf("Snow") >= 0){
-           weatherDisplay = <View style={styles.backgroundContainer}><Image source={backsrc} resizeMode='stretch' style={styles.backdrop} /></View>
-           snowDisplay =  <View style={styles.overlay}><Image style={styles.logo} source={snowsrc} /></View> 
-     }
-     else{
-           weatherDisplay = <Image style={{flex:1, top: 0, left: 0, position: 'absolute', width:'100%', height:'100%', resizeMode: 'stretch'}} source={backsrc} />
-
-         }
-
     return(
       <View style={css.details_screen_1.x_container}>
-         
-       {weatherDisplay}
-       {snowDisplay}
- 
+        <Image style={{flex:1, top: 0, left: 0, position: 'absolute', width:'100%', height:'100%', resizeMode: 'cover'}} source={require('../images/snowy-forecast.jpg')} />
       
-
-
-
       <View style={css.details_screen_1.v_container}>
                   
             <Text style={css.details_screen_1.place}>{place}</Text>
@@ -115,7 +93,7 @@ export default class ResortDetailScreen extends Component {
 
       <View style={css.details_screen_1.detailBlock}>
         <IndicatorViewPager
-            style={{ flex: 1}}
+            style={{ flex: 1 }}
             indicator={this.renderDotIndicator()}>
           <View>
             <MountainDetails data={resObj} />
@@ -123,14 +101,8 @@ export default class ResortDetailScreen extends Component {
           <View>
             <DetailSummary data={postObj} />
           </View>
-          <View>
-            <Image source={{ url:'https://www.stowe.com/_includes/img_retrieve.php?webcam/octagon.jpg'}} style={{flex:1, width:null, height:null, resizeMode: 'cover'}} />
-          </View>
         </IndicatorViewPager>
       </View>
-
-
-
 
       </View>
     );
@@ -138,36 +110,3 @@ export default class ResortDetailScreen extends Component {
     //}
   }
 }
-
-var styles = StyleSheet.create({
-  backgroundContainer: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-   // opacity: 0.7,
-   // backgroundColor: 'white'
-    backgroundColor: 'rgba(30,96,218,0.4)'
-  },
-  logo: {
-    
-    //height: 310,
-    opacity: 0.5,
-    //width: 160,
-    //height: 52
-    backgroundColor: 'rgba(30,96,218,0.4)'
-  },
-  backdrop: {
-    flex:1,
-    flexDirection: 'column'
-  }
-});

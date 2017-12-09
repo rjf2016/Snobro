@@ -1,7 +1,7 @@
 // @flow
 
 import React from "react";
-import {StyleSheet} from "react-native";
+import {StyleSheet} from "react-native"; 
 
 export const colors = {
   "secondary": '#0686E4',
@@ -32,7 +32,7 @@ export const values = {
   "font_title_size": 20,
   "font_time_size": 12,
   "font_place_size": 26,
-  "font_temp_size": 24,
+  "font_temp_size": 20,
   'border_radius': 2,
   "tiny_icon_size": 24,
   "small_icon_size": 40,
@@ -52,6 +52,7 @@ export const dailyWeather = StyleSheet.create({
   },
   temp: {
     textAlign: 'center',
+    color: 'ghostwhite',
   },
   icon: {
 
@@ -59,6 +60,8 @@ export const dailyWeather = StyleSheet.create({
   phase: {
     textAlign: "center",
     fontWeight: "500",
+    fontSize: 12,
+    color: 'ghostwhite',
   },
 
 });
@@ -67,34 +70,101 @@ export const addDegreesToEnd = (temp) => {
   return `${temp}${String.fromCharCode(176)}`
 };
 
+var backgroundImages = [
+    require('../images/background-snowy.jpg'),
+    //require('../images/background-snow.jpg'),
+    require('../images/background-sunny.jpg'),
+    require('../images/background-cloudy.jpg'),
+    require('../images/snow-anim.gif'),
+];
 
+export const getFallingSnowImage = () => {
+  return backgroundImages[3];
+}
+
+export const getBackgroundImage = (weatherConditions) => {
+
+    if(weatherConditions=="Snow" || weatherConditions.indexOf('Snow')>=0 )
+      return backgroundImages[0];
+    if(weatherConditions=="Clear")
+            return backgroundImages[1];
+    if(weatherConditions=="Rain" || weatherConditions=="AM Showers" || weatherConditions=="PM Showers")
+      return backgroundImages[2];
+    if(weatherConditions=="Cloudy" || weatherConditions == "Mostly Cloudy")
+      return backgroundImages[2];
+    if(weatherConditions=="Partly Cloudy")
+        return backgroundImages[2];
+    if(weatherConditions=="Partly Sunny" || weatherConditions=="Mostly Sunny" || weatherConditions=="Partly Sunny" || weatherConditions.indexOf('Clear')>=0)
+      return  backgroundImages[1];
+
+      return  backgroundImages[2];;
+}
+
+export const getWeatherIcons = (weatherConditions) => {
+
+    if(weatherConditions=="Snow" || weatherConditions.indexOf('Snow')>=0 )
+      return {iconName: 'ios-snow-outline', iconFont: 'ionicon', iconColor: 'skyblue'}
+    if(weatherConditions=="Clear")
+            return {iconName: 'ios-sunny', iconFont: 'ionicon', iconColor: '#272e51'}
+    if(weatherConditions=="Rain" || weatherConditions=="AM Showers" || weatherConditions=="PM Showers")
+      return {iconName: 'ios-rainy', iconFont: 'ionicon', iconColor: '#81848c'}
+    if(weatherConditions=="Cloudy" || weatherConditions == "Mostly Cloudy")
+      return {iconName: 'ios-cloudy', iconFont: 'ionicon', iconColor: 'darkgrey'}
+    if(weatherConditions=="Partly Cloudy")
+        return {iconName: 'ios-cloudy', iconFont: 'ionicon', iconColor: 'darkgrey'}
+    if(weatherConditions=="Partly Sunny" || weatherConditions=="Mostly Sunny" || weatherConditions=="Partly Sunny" || weatherConditions.indexOf('Clear')>=0)
+      return {iconName: 'ios-partly-sunny', iconFont: 'ionicon', iconColor: '#f4df41'}
+
+      return {iconName: 'ios-sunny', iconFont: 'ionicon', iconColor: '#f4df41'}
+}
 export const home_screen_list = StyleSheet.create(
   {
     container: {
-      marginTop: 14,
       alignSelf: "stretch",
+      marginBottom: -6,
     },
     row: {
       elevation: 1,
-      borderRadius: 2,
-      borderBottomWidth: 1,
+      borderRadius: 1,
+      borderBottomWidth: 2,
       borderRightWidth: 1,
       // backgroundColor: colors.tertiary,
-      borderColor: 'lightgrey',
-      backgroundColor: 'gray',
+      borderColor: 'lightgray',
+      backgroundColor: 'ghostwhite',
       flex: 1,
       flexDirection: 'row',  // main axis
-      justifyContent: 'flex-start', // main axis
+      
       alignItems: 'center', // cross axis
       paddingTop: 10,
       paddingBottom: 10,
       paddingLeft: 4,
       paddingRight: 4,
-      marginLeft: 4,
-      marginRight: 4,
-      marginTop: 0,
-      marginBottom: 6,
-      height: 80,
+      // marginLeft: 4,
+      // marginRight: 4,
+      marginTop: 5,
+      marginBottom: 3,
+      height: 85,
+    },
+    firstRow: {
+      elevation: 1,
+      borderRadius: 1,
+      borderBottomWidth: 2,
+      borderRightWidth: 1,
+      // backgroundColor: colors.tertiary,
+      borderColor: 'lightgray',
+      backgroundColor: 'ghostwhite',
+      flex: 1,
+      flexDirection: 'row',  // main axis      
+      alignItems: 'center', // cross axis
+      paddingBottom: 10,
+      paddingLeft: 4,
+      paddingRight: 4,
+      // marginLeft: 4,
+      // marginRight: 4,
+      marginTop: 5,
+      marginBottom: 3,
+      paddingTop: 20,
+      height: 105,
     },
 
     rowSnow: {
@@ -132,6 +202,7 @@ export const home_screen_list = StyleSheet.create(
     row_cell_timeplace: {
       flex: 2,
       flexDirection: 'column',
+
     },
     row_cell_trails: {
       flex: 1,
@@ -140,7 +211,7 @@ export const home_screen_list = StyleSheet.create(
     },
     row_cell_temp: {
       color: colors.weather_text_color,
-      paddingLeft: 16,
+      
       flex: 0,
       fontSize: values.font_temp_size,
       fontFamily: values.font_body,
@@ -152,6 +223,7 @@ export const home_screen_list = StyleSheet.create(
       flex: 0,
       fontSize: values.font_time_size,
       fontFamily: values.font_body,
+      paddingLeft: 7,
     },
     row_trails: {
       color: colors.weather_text_color,
@@ -168,7 +240,51 @@ export const home_screen_list = StyleSheet.create(
       flex: 2,
       fontSize: values.font_place_size,
       fontFamily: values.font_body,
+      fontWeight: '500',
+      paddingLeft: 7,
     },
+  });
+
+export const home_screen_edit_list = StyleSheet.create(
+  {
+    container: {
+      alignSelf: "stretch",
+    },
+    row: {
+      elevation: 1,
+      borderRadius: 1,
+      borderBottomWidth: 2,
+      borderRightWidth: 1,
+      // backgroundColor: colors.tertiary,
+      borderColor: 'lightgray',
+      backgroundColor: 'ghostwhite',
+      flex: 1,
+      flexDirection: 'row',  // main axis
+      justifyContent: 'flex-start', // main axis
+      alignItems: 'center', // cross axis
+      paddingTop: 4,
+      paddingBottom: 4,
+      paddingLeft: 4,
+      paddingRight: 4,
+      // marginLeft: 4,
+      // marginRight: 4,
+      marginTop: 4,
+      marginBottom: 4,
+      height: 60,
+    },
+   row_buttonContainer:{
+       backgroundColor: 'green',
+       paddingVertical: 15,
+       marginRight: 1,
+       width: 75
+       //marginLeft: 50
+    },
+
+    plus_style:{
+        color: 'green',
+        paddingLeft: 8
+      }
+
   });
 
 export const home_screen = StyleSheet.create(
@@ -225,7 +341,7 @@ export const details_screen_1 = StyleSheet.create(
     //  justifyContent: 'center', // main axis
       //alignItems: 'center', // cross axis
       backgroundColor: colors.tertiary,
-
+ 
     },
     widget: {
       width: 140,
@@ -240,19 +356,22 @@ export const details_screen_1 = StyleSheet.create(
     },
     v_container: {
       alignItems: 'center', // cross axis
-      backgroundColor: colors.tertiary,
+      backgroundColor: 'transparent',
+      paddingTop: 30,
+
+      //backgroundColor: 'transparent',
     },
     h_container: {
 
       flexDirection: 'row', // main axis
       justifyContent: 'space-between', // main axis=
-      backgroundColor: colors.tertiary,
+      backgroundColor: 'transparent',
       height: 80,
     },
     separator: {
       alignSelf: 'stretch',
       backgroundColor: colors.separator_background,
-      height: 1,
+      height: 1.5,
       marginLeft: 10,
       marginRight: 10,
       marginTop: 10,
@@ -264,21 +383,24 @@ export const details_screen_1 = StyleSheet.create(
       justifyContent: 'space-between',
     },
     place: {
-      paddingTop: 0,
-      paddingBottom: 10,
-      color: colors.weather_text_color,
+      paddingTop: 15,
+      paddingBottom: 15,
+      color: 'ghostwhite',
       fontFamily: values.font_body,
       fontSize: 35,
     },
     description: {
-      color: colors.weather_text_color,
+      color: 'ghostwhite',
       fontFamily: values.font_body,
       fontSize: 14,
+      marginBottom: 10,
     },
     current_temp: {
-      color: colors.weather_text_color,
+      color: 'ghostwhite',
       fontFamily: values.font_body,
       fontSize: 35,
+      fontWeight: "400",
+      marginBottom: 10,
     },
     list_container: {
       //marginTop: 14,
@@ -288,37 +410,67 @@ export const details_screen_1 = StyleSheet.create(
       flexDirection: 'row',
       paddingLeft: 16,
       paddingRight: 16,
-      paddingBottom: 12
+      paddingBottom: 12,
     },
     list_row_time: {flex: 1},
     list_row_temp: {paddingLeft: 12},
 
+    detailBlock: {
+      flex: 5,
+      justifyContent: 'space-between',
+      paddingTop: 15,
+      backgroundColor: 'transparent',
+    },
+
     summarySeparator: {
       alignSelf: 'stretch',
-      backgroundColor: colors.separator_background,
-      height: 1,
-      marginRight: 40,
-      marginLeft: 40,
+      backgroundColor: 'ghostwhite',
+      //height: 1,
       marginTop: 2,
-      marginBottom: 10,
+      marginBottom: 20,
     },
-    summaryRow: {
-      marginTop: 20,
+    fullSummaryContainer: {
       marginRight: 40,
       marginLeft: 40,
+    },
+
+    summaryRow: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      height: 29,
     },
     summaryRowHeaderText: {
       textAlign: 'left',
-      fontSize: 16,
+      fontSize: 14,
+      color: 'ghostwhite',
+      fontFamily: values.font_body,
     },
     summaryRowText: {
       textAlign: 'left',
       fontFamily: values.font_body,
-      fontWeight: "500",
+      fontWeight: "400",
       fontSize: 22,
+      color: 'ghostwhite'
     },
+    summaryRight: {
+      width: 100,
+      marginLeft: 30,
+    },
+    summaryLeft: {
+      width: 140,
+    },
+    fullMountainDetailsContainer: {
+      marginRight: 40,
+      marginLeft: 40,
+      paddingTop: 4,
+    },
+    shrinkSize: {
+      fontSize: 16,
+      fontWeight: "400",
+      color: 'ghostwhite',
+    //  alignSelf: 'flex-end',
+      textAlign: 'left',
+    },
+
 
   }
 );
