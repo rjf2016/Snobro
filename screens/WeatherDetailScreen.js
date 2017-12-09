@@ -59,7 +59,7 @@ class WeatherDetailScreen extends Component {
 		  };
 		  //this.resortsRef = this.getRef().child('Resorts');
 
-      console.log("HERRRREE");
+
 		}
 
 		componentDidMount() {

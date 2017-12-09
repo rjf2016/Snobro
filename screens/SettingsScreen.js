@@ -11,6 +11,7 @@ import {
 class SettingsScreen extends Component {
   static navigationOptions = props => {
   const { navigation } = props;
+
   const { state, setParams } = navigation;
   const { params } = state;
   return {
@@ -26,6 +27,11 @@ class SettingsScreen extends Component {
     ),
   };
 };
+
+constructor(props){
+   super(props);
+  
+  }
 
 render() {
     const { state, navigate } = this.props.navigation;

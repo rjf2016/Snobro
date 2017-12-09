@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableNativeFeedback, 
+  Button,
   Image,
   View
 } from "react-native";
@@ -25,27 +26,18 @@ export default  class WeatherScreen extends Component {
    _navigation;
    _weatherlist;
 
-
-
    static navigationOptions = props => {
     const { navigation, screenProps } = props;
      const { state, setParams } = navigation;
      const { params } = state;
+
      const { weatherstore } = screenProps.store.weather;  // const { weatherstore } = props.navigation.state.params.weatherstore;
-     
+
      return {
-      //
-      //       line below works plus added this line to the render below: <StatusBar hidden />
-      //        Note:  the thin statusbar separator was still appearing at the top
-      //               so added "bottom: 5000" to remove it (i think it just pushes it out of view)
-      
-      headerStyle:{ position: 'absolute', backgroundColor: 'transparent', zIndex: 100, top: 0, bottom: 5000, left: 0, right: 0 },
-       //title: 'Resorts',
-      
+       title: 'Resorts',
        headerLeft: null,
-       //backgroundColor: 'transparent',
        }
-    };
+     };
 
    navigateWeatherEdit = (WeatherEdit) => {
       const {navigate} = this.props.navigation;
@@ -88,7 +80,75 @@ export default  class WeatherScreen extends Component {
        this.setState({weatherlist: this.props.screenProps.store.weather.weatherList});
      }
 
-   
+    // getRowColor(currentWeather) {
+    //   switch(currentWeather) {
+    //     case "ios-snow-outline":
+    //       return css.home_screen_list.rowSnow;
+    //       break;
+    //     case "ios-rainy-outline":
+    //       return css.home_screen_list.rowRain;
+    //       break;
+    //     case "ios-cloudy-outline":
+    //       return css.home_screen_list.rowCloud;
+    //       break;
+    //     case "ios-partly-sunny-outline":
+    //         return css.home_screen_list.rowPartlySunny;
+    //         break;
+    //     default:
+    //       return css.home_screen_list.rowSunny;
+    //   }
+    // }
+
+
+
+  // only renders each list item
+  // renderRow( {item} ) {
+
+
+  //   const time = `${item.time}`;
+  //   const place = `${item.place}`;
+  //   //const temp = css.addDegreesToEnd(item.currentTemp);
+  //   const temp = item.currentTemp;
+  //   const opentrails = `${item.openTrails}`;
+  //   const {iconName, iconFont, iconColor, iconRowColor} = item.icon;
+
+  //   let actualRowComponent =
+  //     <View style={css.home_screen_list.row}>
+  //       <Image source={require('../images/blueSkyRowBackground.jpg')} style={{resizeMode: 'cover'}}>
+
+  //         <View style={css.home_screen_list.row_cell_timeplace}>
+  //           <Text style={css.home_screen_list.row_time}>{time}</Text>
+  //           <Text style={css.home_screen_list.row_place}>{place}</Text>
+  //         </View>
+
+
+  //           { this.state.editing == 'edit'
+  //           ? <TouchableOpacity style={css.home_screen_list.row_buttonContainer} onPress={this.onLoginClick}><Text style={css.home_screen_list.row_buttonText}>Delete</Text></TouchableOpacity>
+  //           : <View><Icon color={iconColor} size={css.values.small_icon_size} name={iconName} type={iconFont} />
+  //           <Text style={css.home_screen_list.row_cell_temp}>{temp}</Text></View>
+  //           }
+
+  //       </Image>      
+  //     </View>;
+
+  //   let touchableWrapperIos =
+  //     <TouchableHighlight
+  //       activeOpacity={0.5}
+  //       underlayColor={css.colors.transparent_white}
+  //       onPress={
+  //         () => {
+  //           //this.props.navigation.state.params.weatherstore.deleteResort('okemo');
+  //           this.setState({editing: 'r'});
+  //         }
+  //       }
+  //     >
+  //       {actualRowComponent}
+  //     </TouchableHighlight>;
+
+  //   if (require('react-native').Platform.OS === 'ios') {
+  //     return touchableWrapperIos;
+  //   }
+  // };
 
   // sets up the entire screen
   render() {
@@ -96,9 +156,8 @@ export default  class WeatherScreen extends Component {
 
 
     return (
-     
+
       <View style={{height: '100%'}}>
-       <StatusBar hidden  />
         <WeatherList store={store}  callbackNavigate={this.onResortNavigate} />
 
         <Footer callbackEdit={this.onWeatherEditNavigate} />

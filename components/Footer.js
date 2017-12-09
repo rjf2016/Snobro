@@ -15,37 +15,40 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-//import Pager from './pager';
-//import Settings from './settings/settings';
 
-type Props = {
-  //current: number;
-  //count: number;
-  navigator: any;
-};
+// type Props = {
+ 
+//   navigator: any;
+// };
 
-class Footer extends Component {
-  constructor(props: Props) {
+export default class Footer extends Component {
+  constructor(props) {
     super(props);
 
-    (this: any).navigateToSettings = this.navigateToSettings.bind(this);
-    (this: any).navigateToLocations = this.navigateToLocations.bind(this);
-  }
+    this.onWeatherClick = this.onWeatherClick.bind(this);
+    //(this: any).navigateToSettings = this.navigateToSettings.bind(this);
+    //(this: any).navigateToLocations = this.navigateToLocations.bind(this);
 
+    //    <TouchableHighlight onPress={this.navigateToSettings} underlayColor='transparent'>
+    //        <Icon name='ios-settings-outline' size={32} color='black' />
+    //      </TouchableHighlight>
+
+
+  }
+  onWeatherClick() {
+     this.props.callbackEdit();
+  }
   render() {
     return (
       <View style={styles.footer}>
-
-
-
         <View style={styles.left}>
-          <TouchableHighlight onPress={this.navigateToSettings} underlayColor='transparent'>
-            <Icon name='ios-settings-outline' size={32} color='black' />
-          </TouchableHighlight>
+          
+         <Image source={require('../images/weatherchannel-logo.png')} style={{opacity: 0.5, flex:1, height:32, width:32, left:10, resizeMode: 'contain'}} />
+
         </View>
 
         <View style={styles.right}>
-          <TouchableHighlight onPress={this.navigateToLocations} style={{width: 20}} underlayColor='transparent'>
+          <TouchableHighlight onPress={this.onWeatherClick} style={{width: 20}} underlayColor='transparent'>
             <Icon name='ios-list' size={35} color='black' />
           </TouchableHighlight>
         </View>
@@ -55,18 +58,8 @@ class Footer extends Component {
     );
   }
 
-  navigateToSettings() {
-    this.props.navigator.push({
-      settings: true
-    });
-  }
-
-  navigateToLocations() {
-    this.props.navigator.push({
-      locations: true
-    });
-  }
 }
+
 
 const styles = StyleSheet.create({
   footer: {
@@ -75,7 +68,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 1,
     paddingRight: 15,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -99,4 +92,3 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Footer;

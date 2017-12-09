@@ -1,29 +1,29 @@
-import {firebaseApp} from '../components/base';
+import { observable, action } from 'mobx'
+import Firebase from 'firebase';
 
 export default class AuthStore {
-   authUser = null;
+   @observable authUser = null
 
   constructor() {
-    firebaseApp.auth().onAuthStateChanged((user) => {
+    //firebaseApp.auth().onAuthStateChanged((user) => {
+    Firebase.auth().onAuthStateChanged((user) => {
       this.authUser = user;
     })
   }
-
+ @action
   signIn(email, password) {
      if(this.authUser) {
       return Promise.resolve(this.authUser)
     }
-    return firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    return Firebase.auth().signInWithEmailAndPassword(email, password)
   }
-
+ @action
   signUp(email, password) {
-     console.log("Inside");
-     console.log(email + " " + password);
 
     if(this.authUser) {
       let p = new Promise((resolve, reject) => {
-        firebaseApp.auth().signOut().then(() => {
-          firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+        Firebase.auth().signOut().then(() => {
+          Firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => {
               resolve()
             },(err) => {
@@ -36,11 +36,25 @@ export default class AuthStore {
       return p
     }
     else {
-      return firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+      return Firebase.auth().createUserWithEmailAndPassword(email, password)
     }
   }
-
+ @action
   forgotPassword(email) {
-    return firebaseApp.auth().sendPasswordResetEmail(email)
+    return Firebase.auth().sendPasswordResetEmail(email)
   }
+
+
+seedResorts(token){
+      var user = Firebase.auth().currentUser;
+      //console.log("UserData/" + user.uid + "/" + "jaypeak");
+
+      var snoBroRef = this.getDBRef();
+
+      Firebase.database().ref("UserData/" + user.uid + "/" + "jaypeak").set( "jaypeak" );
+      this.setItem( resortKey );
+
+}
+
+
 }

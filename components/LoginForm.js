@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-const styles = require('../styles.js')
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native'
+
+const styles = require('../styles.js')
 
 class LoginForm extends Component {
 
@@ -16,21 +17,15 @@ class LoginForm extends Component {
    }
 
 
-onLoginClick() {
-   this.props.callbackLogin(this.state.username, this.state.password);
-}
-
-   componentDidMount() {
-      //this.state.auth.test("made it to the form!!!");
+   onLoginClick() {
+      this.props.callbackLogin(this.state.username, this.state.password);
    }
 
-   // onForgotPasswordPress() {
-   //    alert("Send new password");
-   // }
+   componentDidMount() {
 
-   onSignUpPress () {
-         //this.props.callbackSignUp();
-    }
+       this.setState({username: 'rickfahey81@gmail.com', password: 'Noxerdod1'})
+   }
+
 
   render() {
 

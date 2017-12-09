@@ -14,17 +14,17 @@ class SignupForm extends Component {
         password: ''
      }
      this.onSignUpClick = this.onSignUpClick.bind(this);
-
    }
-
 
    onSignUpClick() {
-      console.log("Well? username: " + this.state.username);
       this.props.callbackSignUp(this.state.username, this.state.password);
    }
-   componentDidMount() {
+ 
+  componentDidMount() {
       //this.state.auth.test("made it to the form!!!");
    }
+ 
+
   render() {
     //console.log(this.state);
     return (
@@ -49,6 +49,7 @@ class SignupForm extends Component {
                secureTextEntry/>
 
          <TouchableOpacity style={style.buttonContainer}
+               //onPress={this.onSignUpClick}>
                onPress={this.onSignUpClick}>
             <Text  style={style.buttonText}>Sign-up</Text>
          </TouchableOpacity>

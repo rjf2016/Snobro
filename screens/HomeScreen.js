@@ -68,10 +68,6 @@ const {weatherstore} = props.navigation.state.params.weatherstore;
                   editing: 'edit',
               });
     }
-
-
-    console.log(this.props.navigation.state);
-    console.log(this.state);
   }
 
    constructor(props) {
@@ -104,7 +100,6 @@ const {weatherstore} = props.navigation.state.params.weatherstore;
     const opentrails = `${item.openTrails}`;
     const {iconName, iconFont, iconColor} = item.icon;
 
-    console.log(this.state);
 
 
     let actualRowComponent =
@@ -138,7 +133,6 @@ const {weatherstore} = props.navigation.state.params.weatherstore;
         onPress={
           () => {
             //this._navigation.navigate("DetailsRoute", {...item});
-            console.log(this.props);
             this.props.navigation.navigate('ResortDetail', {item});
           }
         }

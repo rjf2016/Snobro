@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 
-import {firebaseApp} from '../components/base';
+//import {firebaseApp} from '../components/base';
 import ForgotForm from '../components/ForgotForm';
 
 class ForgotScreen extends Component {

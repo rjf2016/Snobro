@@ -1,4 +1,5 @@
 {
-  "presets": ["react-native", "flow"]
-
+  "presets": ["react-native", "flow"],
+  "plugins": ["transform-decorators-legacy"]
 }
+
