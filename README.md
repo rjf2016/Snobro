@@ -33,7 +33,7 @@ $ react-native run-ios
 * Search for any ski resort in Vermont
 * Add your favorite resorts to your dashboard
 * Quickly view detailed current & future weather forecasts 
-* Find resort specific info, (trails open, lifts running, live camera feed, ect..)
+* Find resort specific info, (trails open, lifts running, resort weather, etc..)
 * Push notifications to alert you when a resort you follow is getting snow
 * Google sign-in
 * And more 😊
