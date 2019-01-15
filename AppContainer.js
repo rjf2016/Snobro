@@ -27,9 +27,6 @@ import {observer, Provider} from 'mobx-react/native'
 
 const settingsstore = new SettingsStore();
 const authstore = new AuthStore();
-
-//const p = authstore.signIn('tjf081@gmail.com', 'Mcfly3809');
-
 const weatherstore = new WeatherStore();
 const resortstore = new ResortStore();
 
